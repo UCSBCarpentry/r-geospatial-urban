@@ -58,7 +58,13 @@
     <loc>https://carpentries-incubator.github.io/r-geospatial-urban/LICENSE.html</loc>
   </url>
   <url>
+    <loc>https://carpentries-incubator.github.io/r-geospatial-urban/aio.html</loc>
+  </url>
+  <url>
     <loc>https://carpentries-incubator.github.io/r-geospatial-urban/citation.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries-incubator.github.io/r-geospatial-urban/images.html</loc>
   </url>
   <url>
     <loc>https://carpentries-incubator.github.io/r-geospatial-urban/index.html</loc>
@@ -121,16 +127,34 @@
     <loc>https://carpentries-incubator.github.io/r-geospatial-urban/instructor/LICENSE.html</loc>
   </url>
   <url>
+    <loc>https://carpentries-incubator.github.io/r-geospatial-urban/instructor/aio.html</loc>
+  </url>
+  <url>
     <loc>https://carpentries-incubator.github.io/r-geospatial-urban/instructor/citation.html</loc>
   </url>
   <url>
+    <loc>https://carpentries-incubator.github.io/r-geospatial-urban/instructor/images.html</loc>
+  </url>
+  <url>
     <loc>https://carpentries-incubator.github.io/r-geospatial-urban/instructor/index.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries-incubator.github.io/r-geospatial-urban/instructor/instructor-notes.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries-incubator.github.io/r-geospatial-urban/instructor/key-points.html</loc>
   </url>
   <url>
     <loc>https://carpentries-incubator.github.io/r-geospatial-urban/instructor/profiles.html</loc>
   </url>
   <url>
     <loc>https://carpentries-incubator.github.io/r-geospatial-urban/instructor/reference.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries-incubator.github.io/r-geospatial-urban/instructor-notes.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries-incubator.github.io/r-geospatial-urban/key-points.html</loc>
   </url>
   <url>
     <loc>https://carpentries-incubator.github.io/r-geospatial-urban/profiles.html</loc>
