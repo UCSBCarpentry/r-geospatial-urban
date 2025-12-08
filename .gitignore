@@ -1,3 +1,6 @@
+# data directory in solution set
+scripts/data
+
 # sandpaper files
 episodes/*html
 site/*
