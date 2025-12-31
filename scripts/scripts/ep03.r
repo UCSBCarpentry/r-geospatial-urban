@@ -31,6 +31,10 @@ head(country_vec)
 # first 10 countries
 head(unique(country_vec), 10)
 
+# base R now does pipes:
+
+unique(gapminder$country)  |> head(10)
+
 # jumping ahead, the above is hard to read, so let's
 # use pipes:
 library(dplyr)
@@ -39,7 +43,52 @@ unique(gapminder$country)  %>% head(10)
 # ie: take the results of unique() and send them to head.
 
 
-# select out a 3 columns:
+# Select
+# select out 3 of the 15 columns:
 year_country_gdp <- select(gapminder, year, country, gdpPercap)
 
 head(year_country_gdp)
+
+# Filter
+# get only rows that match criteria
+year_country_gdp_euro <- gapminder |>
+  filter(continent != "Europe" & year >= 2000) |>
+  select(year, country, gdpPercap)
+
+# '&' operator (AND) - both conditions must be met
+
+head(year_country_gdp_euro)
+(year_country_gdp_euro)
+
+# similar filter
+# (remember, our already filtered dataset includes everyone
+# BUT Europe)
+year_gdp_namerica <- year_country_gdp_euro |>
+  filter(country == "Canada" |  country == "Mexico" | country == "United States")
+
+# '|' operator (OR) - at least one of the conditions must be met
+
+head(year_gdp_namerica)
+
+# challenge
+# Write a single command
+# (which can span multiple lines and includes pipes)
+# that will produce a dataframe that has the values
+# for life expectancy, country and year, only for EurAsia.
+
+str(gapminder)
+unique(gapminder$continent)
+
+challenge_EurAsia <- gapminder |>
+    filter(continent=="Asia" | continent == "Europe") |>
+    select(lifeExp, country, year)
+nrow(challenge_EurAsia)
+
+# here in the lesson, the solution has gdp, but the challenge
+# question asks for life expectancy.
+# also: write a second command to tell you how many rows.
+
+# Group and Summarize
+gapminder |> # select the dataset
+  group_by(continent) |> # group by continent
+  summarize(avg_gdpPercap = mean(gdpPercap)) # create basic stats
