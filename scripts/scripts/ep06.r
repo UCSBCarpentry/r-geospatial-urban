@@ -45,4 +45,11 @@ ggplot(data = boundary_Delft) +
 lines_Delft <- st_read("scripts/data/delft-streets.shp")
 points_Delft <- st_read("scripts/data/delft-leisure.shp")
 
+# ggtitle() should work too
+ggplot(data = boundary_Delft) +
+  geom_sf(size = 3, color = "black", fill = "cyan1") +
+  ggtitle("Delft Administrative Boundary") +
+  coord_sf(datum = st_crs(28992)) # displays the axes in meters
+
+
 # final commands review metadata.
