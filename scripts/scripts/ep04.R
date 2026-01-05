@@ -6,7 +6,7 @@ ggplot(
 ) +
   geom_histogram() # geometry layer
 
-gapminder |> # we select a data set
+gapminder |> # we select a subset
   filter(year == 2007 & continent == "Americas") |> # filter year and continent
   ggplot(aes(x = country, y = gdpPercap)) + # the x and y axes represent columns
   geom_col() # we use a column graph as a geometry
@@ -20,7 +20,8 @@ gapminder |>
 gapminder |>
   filter(year == 2007 & continent == "Americas") |>
   mutate(country = fct_reorder(country, gdpPercap)) |> # reorder factor levels
-  ggplot(aes(x = country, y = gdpPercap)) +
+#      ^^^^ but country isn't  a factor
+    ggplot(aes(x = country, y = gdpPercap)) +
   geom_col() +
   coord_flip()
 
