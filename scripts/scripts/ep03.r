@@ -1,8 +1,7 @@
 library(here)
 
 
-
-gapminder <- read.csv(here("scripts/data", "gapminder-data.csv"))
+gapminder <- read.csv(here("scripts/data", "gapminder_data.csv")) # dash or underscore?
 
 str(gapminder)
 
@@ -92,3 +91,41 @@ nrow(challenge_EurAsia)
 gapminder |> # select the dataset
   group_by(continent) |> # group by continent
   summarize(avg_gdpPercap = mean(gdpPercap)) # create basic stats
+
+# challenge
+# Calculate the average life expextancy per country. Which country has the
+# longest average life expectancy and which has the shortest?
+# hint: use max() and min() functions.
+
+gapminder |>
+  group_by(country) |>
+  summarize(avg_lifeExp = mean(lifeExp)) |>
+  filter(avg_lifeExp == min(avg_lifeExp) |
+           avg_lifeExp == max(avg_lifeExp))
+
+# multiple groups and summary variables
+gapminder |>
+  group_by(continent, year) |>
+  summarize(avg_gdpPercap = mean(gdpPercap))
+
+gdp_pop_bycontinents_byyear <- gapminder |>
+  group_by(continent, year) |>
+  summarize(
+    avg_gdpPercap = mean(gdpPercap),
+    sd_gdpPercap = sd(gdpPercap),
+    avg_pop = mean(pop),
+    sd_pop = sd(pop),
+    n_obs = n()
+  )
+
+head(gdp_pop_bycontinents_byyear)
+
+# Frequencies
+gapminder |>
+  count(continent)
+
+# Mutate
+gapminder_gdp <- gapminder |>
+  mutate(gdpBillion = gdpPercap * pop / 10^9)
+
+head(gapminder_gdp)
