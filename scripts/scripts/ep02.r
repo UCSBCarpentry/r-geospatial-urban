@@ -92,4 +92,3 @@ nordic_cat <- factor(
 
 # now Norway will be the first category, Denmark second and Sweden third
 nordic_cat
-

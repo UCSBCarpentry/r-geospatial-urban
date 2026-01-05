@@ -1,7 +1,6 @@
 library(here)
 
-
-gapminder <- read.csv(here("scripts/data", "gapminder_data.csv")) # dash or underscore?
+gapminder <- read.csv(here("data", "gapminder-data.csv"))
 
 str(gapminder)
 
