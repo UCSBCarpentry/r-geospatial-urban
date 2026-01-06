@@ -26,7 +26,10 @@ factor(lines_Delft$highway) |> levels()
 str(lines_Delft)
 lines_Delft$highway <-factor(lines_Delft$highway)
 
-str(lines_Delft)
+# Impromptu change during the lesson
+lines_Delft_fct <- lines_Delft |>
+  mutate(highway_fct = factor(highway))
+str(lines_Delft_fct)
 
 # challenge: look at points attributes:
 # 1 How many fields does it have?
