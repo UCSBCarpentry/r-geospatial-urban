@@ -2,11 +2,16 @@
 
 # these are the 3 objects from the last episode
 
+library(sf)
+library(ggplot2)
+
 lines_Delft <- st_read("scripts/data/delft-streets.shp")
 points_Delft <- st_read("scripts/data/delft-leisure.shp")
 
 # will we need to re-re-project this?
 boundary_Delft <- st_read("scripts/data/delft-boundary.shp", quiet = TRUE)
+st_crs(lines_Delft) == st_crs(boundary_Delft)
+
 
 ncol(lines_Delft)
 names(lines_Delft)
@@ -23,6 +28,7 @@ unique(lines_Delft$highway)
 factor(lines_Delft$highway) |> levels()
 
 # but that's not sticky
+# remember from review?
 str(lines_Delft)
 lines_Delft$highway <-factor(lines_Delft$highway)
 

@@ -1,3 +1,5 @@
+# Arie's teaching file
+
 library(here)
 
 gapminder <- read.csv(here("data", "gapminder-data.csv"))
@@ -26,7 +28,6 @@ year_country_gdp <- gapminder |>
   select(year, country, gdpPercap)
 
 # outside of Europe in 21st century
-
 year_country_gdp_eurasia <- gapminder |>
   filter(continent == "Europe" | continent == "Asia") |>
   select(year, country, lifeExp)
