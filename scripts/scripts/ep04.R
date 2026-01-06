@@ -20,7 +20,8 @@ gapminder |>
 gapminder |>
   filter(year == 2007 & continent == "Americas") |>
   mutate(country = fct_reorder(country, gdpPercap)) |> # reorder factor levels
-#      ^^^^ but country isn't  a factor
+# re-ordering something that wasn't already a factor automagically
+  # converts text to factos
     ggplot(aes(x = country, y = gdpPercap)) +
   geom_col() +
   coord_flip()
