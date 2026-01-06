@@ -109,7 +109,7 @@ gapminder |>
 
 ####### We stopped here.
 
-
+# jose <= today & today <= arie
 
 # #############################
 # review for Tuesday
