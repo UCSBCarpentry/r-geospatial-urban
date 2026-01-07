@@ -131,7 +131,10 @@ gapminder <- read.csv(here("data", "gapminder-data.csv"))
 
 # remind ourselves what they look like with:
 # structure: ...
+str(gapminder)
 # first few lines: ...
+
+tail(gapminder$year)
 
 # GDP vs Life Expectancy
 ggplot(data = gapminder,
@@ -153,15 +156,19 @@ americas <- gapminder |>
   filter(continent == "Americas" & year == 2007) |>
   select(year, country, gdpPercap, lifeExp)
 
+americas
+
 americas_income <- americas |>
   select(country, gdpPercap)
 americas_income
 
 
 # this is more from the solution set:
-gapminder <- gapminder |>
+gapminder_filtered <- gapminder |>
   filter(year == 2007 & continent == "Americas") |>
   mutate(country = fct_reorder(country, gdpPercap))
+
+head(gapminder_filtered)
 
 # Ari's solution doesn't save the mutate!!!
 # there's a big difference between these!
@@ -169,5 +176,7 @@ gapminder <- gapminder |>
 gapminder |>
   filter(year == 2007 & continent == "Americas") |>
   mutate(country = fct_reorder(country, gdpPercap))
+
+str(gapminder)
 
 # pick up at ep04.r line 20.

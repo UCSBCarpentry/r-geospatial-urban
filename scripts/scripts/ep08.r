@@ -4,14 +4,20 @@
 # same 3 objects
 lines_Delft <- st_read("scripts/data/delft-streets.shp")
 points_Delft <- st_read("scripts/data/delft-leisure.shp")
-boundary_Delft <- st_read("scripts/data/delft-boundary.shp", quiet = TRUE)
+boundary_Delft <- st_read("scripts/data/delft-boundary.shp")
 
 # these 3 come from ep. 7
 road_types <- c("motorway", "primary", "secondary", "cycleway")
 road_colors <- c("blue", "green", "navy", "purple")
+
+
 lines_Delft_selection <- lines_Delft |>
   filter(highway %in% road_types) |>
   mutate(highway = factor(highway, levels = road_types))
+
+
+
+
 
 
 
@@ -29,8 +35,7 @@ ggplot() +
     size = 1
   ) +
   geom_sf(data = points_Delft) +
-  labs(title = "Mobility network of Delft") +
-  coord_sf(datum = st_crs(28992))
+  labs(title = "Mobility network of Delft")
 ###### there's a typo in the legend here. it's points_Delft
 
 
@@ -54,7 +59,7 @@ ggplot() +
   ) +
   geom_sf(
     data = points_Delft,
-    aes(fill = leisure),
+    aes(fill = leisure), # add the aes.
     shape = 21
   ) +
   scale_color_manual(
@@ -63,7 +68,7 @@ ggplot() +
   ) +
   scale_fill_manual(
     values = leisure_colors,
-    name = "Lesiure Location"
+    name = "Leisure Location"
     ### typo here -- Lesiure
   ) +
   labs(title = "Mobility network and leisure in Delft") +
@@ -87,7 +92,7 @@ ggplot() +
 ### have we settled on points yet?
         data = points_Delft,
     aes(fill = leisure),
-    shape = 22
+    shape = 18
   ) +
   scale_color_manual(
     values = road_colors,
@@ -128,3 +133,8 @@ ggplot() +
   coord_sf(datum = st_crs(28992))
 
 # I know nothing of Delft. I bet there's a canal.
+
+# Arie saves shapefile of tables and playgrounds.
+st_write(leisure_locations_selection,
+         "scripts/data_output/leisure_location_selection.shp",
+         driver="ESRI Shapefile")

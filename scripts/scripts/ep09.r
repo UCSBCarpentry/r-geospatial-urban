@@ -127,3 +127,4 @@ st_write(leisure_locations_selection,
          driver = "ESRI Shapefile"
 )
 
+# I know the lesson saves this to data/, but shouldn't we be saving it to data_output? -AB
