@@ -4,14 +4,20 @@
 # same 3 objects
 lines_Delft <- st_read("scripts/data/delft-streets.shp")
 points_Delft <- st_read("scripts/data/delft-leisure.shp")
-boundary_Delft <- st_read("scripts/data/delft-boundary.shp", quiet = TRUE)
+boundary_Delft <- st_read("scripts/data/delft-boundary.shp")
 
 # these 3 come from ep. 7
 road_types <- c("motorway", "primary", "secondary", "cycleway")
 road_colors <- c("blue", "green", "navy", "purple")
+
+
 lines_Delft_selection <- lines_Delft |>
   filter(highway %in% road_types) |>
   mutate(highway = factor(highway, levels = road_types))
+
+
+
+
 
 
 
