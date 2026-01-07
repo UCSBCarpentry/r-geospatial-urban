@@ -4,6 +4,8 @@
 
 library(terra)
 library(ggplot2)
+library(dplyr)
+
 describe("scripts/data/tud-dtm-5m.tif")
 describe("scripts/data/tud-dsm-5m.tif")
 
@@ -65,3 +67,43 @@ ggplot(CHM_TUD_df) +
 
 #  Plot the CHM_TUD raster using breaks that make sense
 #   for the data.
+
+summary(CHM_TUD_df)
+# Min and max in here.
+
+# the 'distribution' is the histogram (this feels like a red herring question
+# to me.)
+
+
+#  3. Plot the CHM_TUD raster using breaks that make sense
+#       for the data.
+#  Maybe we need to pause and talk about what 'makes sense'
+
+# # lesson solution offers 'those < 0' which makes sense
+
+custom_bins <- c(-5, 0, 10, 20, 30, 100)
+CHM_TUD_df <- CHM_TUD_df |>
+  mutate(canopy_discrete = cut(`tud-dsm-5m`, breaks = custom_bins))
+
+ggplot() +
+  geom_raster(data = CHM_TUD_df, aes(
+    x = x,
+    y = y,
+    fill = canopy_discrete
+  )) +
+  scale_fill_manual(values = terrain.colors(5)) +
+  coord_quickmap()
+
+
+# exporting geotiffs
+# very similar to shapefile
+# but filetype instead of driver
+# note for the authors: I think this shouldn't be fig/
+
+writeRaster(CHM_TUD, "scripts/data_output/CHM_TUD.tiff",
+            filetype = "GTiff",
+            overwrite = TRUE)
+
+# bonus challenge if there's time:
+# adjust the color pallet so that < - 0 is watery blue.
+
