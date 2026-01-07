@@ -53,7 +53,7 @@ ggplot(CHM_TUD_df) +
   geom_histogram(aes(`tud-dsm-5m`))
 
 # Challenge: Explore CHM Raster Values
-# #########
+
 # It is often a good idea to explore the range of values
 # in a raster dataset just like we might explore a dataset
 # that we collected in the field.
@@ -65,4 +65,3 @@ ggplot(CHM_TUD_df) +
 
 #  Plot the CHM_TUD raster using breaks that make sense
 #   for the data.
-
