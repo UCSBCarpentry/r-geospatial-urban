@@ -48,3 +48,4 @@ ggplot() +
   scale_fill_gradientn(name = "Canopy/Building Height", colors = terrain.colors(10)) +
   coord_equal()
 
+
