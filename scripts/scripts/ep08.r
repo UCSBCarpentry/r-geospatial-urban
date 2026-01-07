@@ -29,8 +29,7 @@ ggplot() +
     size = 1
   ) +
   geom_sf(data = points_Delft) +
-  labs(title = "Mobility network of Delft") +
-  coord_sf(datum = st_crs(28992))
+  labs(title = "Mobility network of Delft")
 ###### there's a typo in the legend here. it's points_Delft
 
 
@@ -54,7 +53,7 @@ ggplot() +
   ) +
   geom_sf(
     data = points_Delft,
-    aes(fill = leisure),
+    aes(fill = leisure), # add the aes.
     shape = 21
   ) +
   scale_color_manual(
@@ -63,7 +62,7 @@ ggplot() +
   ) +
   scale_fill_manual(
     values = leisure_colors,
-    name = "Lesiure Location"
+    name = "Leisure Location"
     ### typo here -- Lesiure
   ) +
   labs(title = "Mobility network and leisure in Delft") +
@@ -87,7 +86,7 @@ ggplot() +
 ### have we settled on points yet?
         data = points_Delft,
     aes(fill = leisure),
-    shape = 22
+    shape = 18
   ) +
   scale_color_manual(
     values = road_colors,
@@ -128,3 +127,8 @@ ggplot() +
   coord_sf(datum = st_crs(28992))
 
 # I know nothing of Delft. I bet there's a canal.
+
+# Arie saves shapefile of tables and playgrounds.
+st_write(leisure_locations_selection,
+         "scripts/data_output/leisure_location_selection.shp",
+         driver="ESRI Shapefile")
