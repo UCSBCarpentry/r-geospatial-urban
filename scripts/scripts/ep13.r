@@ -48,3 +48,21 @@ ggplot() +
   scale_fill_gradientn(name = "Canopy/Building Height", colors = terrain.colors(10)) +
   coord_equal()
 
+# Holland is flat. And small towns are not tall
+ggplot(CHM_TUD_df) +
+  geom_histogram(aes(`tud-dsm-5m`))
+
+# Challenge: Explore CHM Raster Values
+# #########
+# It is often a good idea to explore the range of values
+# in a raster dataset just like we might explore a dataset
+# that we collected in the field.
+
+#  What is the minimum and maximum value
+#   for the Canopy Height Model CHM_TUD that we just created?
+
+#  What is the distribution of all the pixel values in the CHM?
+
+#  Plot the CHM_TUD raster using breaks that make sense
+#   for the data.
+
