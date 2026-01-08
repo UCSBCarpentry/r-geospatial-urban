@@ -1,9 +1,7 @@
 # episode 15
 # importing OSM data
-
-
-
 # we were literally doing this in the office before the holidays
+#    via a web page
 
 library(tidyverse)
 library(sf)

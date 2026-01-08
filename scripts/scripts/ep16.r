@@ -116,6 +116,7 @@ centroids_old <- st_centroid(old_buildings) |>
   st_transform(crs = 28992)
 
 nrow(single_old_buffer)
+
 ggplot() +
   geom_sf(data = single_old_buffer, aes(fill = ID)) +
   geom_sf(data = centroids_old, size=.1) +
@@ -131,6 +132,9 @@ centroids_buffers <-
 centroid_by_buffer <- centroids_buffers |>
   group_by(ID) |>
   summarise(n_buildings = n())
+
+str(centroid_by_buffer)
+
 
 single_buffer <- single_old_buffer |>
   st_join(centroid_by_buffer, left = TRUE)
