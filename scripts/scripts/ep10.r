@@ -19,6 +19,7 @@ summary(values(DSM_TUD))
 DSM_TUD_df <- as.data.frame(DSM_TUD, xy = TRUE)
 
 str(DSM_TUD_df)
+# turbo is good for showing high outliers
 ggplot() +
   geom_raster(data = DSM_TUD_df, aes(x = x, y = y, fill = `tud-dsm-5m`)) +
   scale_fill_viridis_c(option = "turbo") +
@@ -38,8 +39,14 @@ nlyr(DSM_TUD)
 #take a look at a different file
 describe("scripts/data/tud-dsm-5m-hill.tif")
 
+# episode 10 challenge mis-states which lesson does
+# hillshades. it's NOT multi-band.
+
+str(DSM_TUD_df)
 DSM_TUD_df <- DSM_TUD_df |>
   mutate(fct_elevation = cut(`tud-dsm-5m`, breaks = 3))
+str(DSM_TUD_df)
+
 
 ggplot() +
   geom_bar(data = DSM_TUD_df, aes(fct_elevation))

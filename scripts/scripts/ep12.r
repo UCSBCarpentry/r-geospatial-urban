@@ -1,7 +1,8 @@
-# Episode 2: Reproject Rasters
+# Episode 12: Reproject Rasters
 # and layer them
+# Jose stayed in his ep 10 script when he taught this.
 
-library(tera)
+library(terra)
 
 DTM_TUD <- rast("scripts/data/tud-dtm-5m.tif")
 DTM_hill_TUD <- rast("scripts/data/tud-dtm-5m-hill-WGS84.tif")
