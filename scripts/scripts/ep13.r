@@ -40,17 +40,21 @@ ggplot() +
 
 # the math statement is short and sweet:
 CHM_TUD <- DSM_TUD - DTM_TUD
+
+# our standard change to data frame
 CHM_TUD_df <- as.data.frame(CHM_TUD, xy = TRUE)
 
 ggplot() +
   geom_raster(
     data = CHM_TUD_df,
-    aes(x = x, y = y, fill = `tud-dsm-5m`)
-  ) +
+    aes(x = x, y = y, fill = `tud-dsm-5m`)) +
   scale_fill_gradientn(name = "Canopy/Building Height", colors = terrain.colors(10)) +
+  # attaching a name to the fill puts that name in the legend.
   coord_equal()
 
-# Holland is flat. And small towns are not tall
+# Smell test: Holland is flat
+# lots of open space
+# And small towns are not tall
 ggplot(CHM_TUD_df) +
   geom_histogram(aes(`tud-dsm-5m`))
 
@@ -107,3 +111,23 @@ writeRaster(CHM_TUD, "scripts/data_output/CHM_TUD.tiff",
 # bonus challenge if there's time:
 # adjust the color pallet so that < - 0 is watery blue.
 
+
+ggplot() +
+  geom_raster(data = CHM_TUD_df,
+              aes(x = x, y = y,
+    fill = canopy_discrete
+  )) +
+    scale_fill_viridis_d(5, option="plasma") +
+  coord_quickmap()
+
+
+# ad hoc challenge #######
+color_scale <- c("blue", "green", "gray", "yellow", "red")
+
+ggplot() +
+  geom_raster(data = CHM_TUD_df,
+              aes(x = x, y = y,
+                  fill = canopy_discrete
+              )) +
+  scale_fill_manual(values=color_scale) +
+  coord_quickmap()

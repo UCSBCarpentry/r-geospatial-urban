@@ -5,6 +5,8 @@
 # Finding the middle
 # Computing areas
 
+# it it's after 11:10, do this cut and paste
+
 
 library(tidyverse)
   # for ggplot and dplyr etc etc

@@ -5,6 +5,9 @@
 
 library(tidyverse)
 library(sf)
+
+# this helps the osm package's internet connection
+# (curl) stay alive
 assign("has_internet_via_proxy", TRUE, environment(curl::has_internet))
 
 library(osmdata)
@@ -24,13 +27,19 @@ bb_SB
 
 # extract data from our Brielle extent
 # opq comes from the osmdata library
+# it's a query.
 x <- opq(bbox = bb) |>
   add_osm_feature(key = "building") |>
   osmdata_sf()
+# last line converts it to sf features
 
+# let's peak at it
+str(x)
 str(x$osm_polygons)
 
 # first we get it out of decimal degrees and into a native CRS:
+# we can skip this for non-euro cities, but we will need
+# meters for ep 16.
 buildings <- x$osm_polygons |>
   st_transform(crs = 28992)
 
@@ -53,6 +62,8 @@ ggplot(data = buildings) +
 
 # convert this to a function so that we can pass a city name
 # and get out the same hued building layer
+# we haven't covered functions a lot, but
+# here's why they are useful.
 
 extract_buildings <- function(cityname, year = 1800) {
   bb <- getbb(cityname)
@@ -84,14 +95,11 @@ extract_buildings("Brielle, NL")
 # crazy CRS
 extract_buildings("Goleta, California")
 
-# test on .....
-# ALL old buildings
-extract_buildings("Assisi, Italy")
 
 # test on .....
 extract_buildings("Krakow, Poland")
 
-
+# Is this one faster?
 # let's do it with a different date, and unprojected.
 extract_buildings_2 <- function(cityname, year = 1800) {
   bb <- getbb(cityname)
