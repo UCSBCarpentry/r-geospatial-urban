@@ -5,7 +5,7 @@
 # Finding the middle
 # Computing areas
 
-# it it's after 11:10, do this cut and paste
+# it it's after 11:10, do this copy and paste
 
 
 library(tidyverse)
@@ -19,11 +19,12 @@ library(osmdata)
   # for downloading data from Open Street Map
   # via the Interwebs
 
-# new
+# leftover from ep 15.
+# not actually used in 16
 library(leaflet)
   # for base slippy maps
 
-# new
+# new: for handling spherical data
 library(lwgeom)
 
 # new?
@@ -117,12 +118,21 @@ sf::sf_use_s2(FALSE)
 centroids_old <- st_centroid(old_buildings) |>
   st_transform(crs = 28992)
 
-nrow(single_old_buffer)
 
 ggplot() +
   geom_sf(data = single_old_buffer, aes(fill = ID)) +
   geom_sf(data = centroids_old, size=.1) +
   coord_sf(datum = st_crs(28992))
+
+##
+centroids_zones <- st_centroid(single_old_buffer) |>
+  st_transform(crs = 28992)
+ggplot() +
+  geom_sf(data = single_old_buffer, aes(fill = ID)) +
+  geom_sf(data = centroids_zones, size=.1) +
+  coord_sf(datum = st_crs(28992))
+
+
 
 
 # Intersect and Join
@@ -160,9 +170,5 @@ ggplot() +
   geom_sf(data = buildings) +
   geom_sf(data = single_buffer, aes(fill = n_buildings), colour = NA) +
   scale_fill_viridis_c(
-    alpha = 0.6,
-    begin = 0.6,
-    end = 1,
-    direction = -1,
-    option = "B"
+
   )

@@ -135,7 +135,39 @@ extract_buildings_2("Krakow, Poland")
 
 extract_buildings_2("Gent")
 
-# Can we come up with a test
-# on the fly to help choose appropriate cities?
-# not too big (because we dont' want too many buildings)
-# and not too many NAs in the $startdate
+# 20 minute OSM challenge: would take a lot of reading.
+# or ad hoc: edit the function to take city AND year.
+
+
+
+
+
+
+# ##### Lesson solution:
+# install.packages("leaflet")
+library(leaflet)
+
+
+buildings2 <- buildings |>
+  st_transform(crs = 4326)
+
+# leaflet(buildings2) |>
+#  addTiles() |>
+#   addPolygons(fillColor = ~colorQuantile("YlGnBu", -build_date)(-build_date))
+
+# For a better visual rendering, try:
+
+leaflet(buildings2) |>
+  addProviderTiles(providers$CartoDB.Positron) |>
+  addPolygons(
+    color = "#444444",
+    weight = 0.1,
+    smoothFactor = 0.5,
+    opacity = 0.2, fillOpacity = 0.8,
+    fillColor = ~ colorQuantile("YlGnBu", -build_date)(-build_date),
+    highlightOptions = highlightOptions(
+      color = "white", weight = 2,
+      bringToFront = TRUE
+    )
+  )
+
