@@ -13,32 +13,36 @@ assign("has_internet_via_proxy", TRUE, environment(curl::has_internet))
 library(osmdata)
 
 # you need to trust the authors of the lesson
-# and OSM that this is a reasonable bounding box
+# and OSM that this is a reasonable lat-long bounding box
 bb <- osmdata::getbb("Brielle")
 bb
 
-# let's do it with someplace with know:
-bb_Wuhan <- osmdata::getbb("Wuhan")
-bb_Wuhan
-
-bb_SB <- osmdata::getbb("Santa Barbara, California")
-bb_SB
+# we did a local one. but there is no date data
+# in the buildings
+bb_iv <- osmdata::getbb("Isla Vista, California")
+bb_iv
 
 
-# extract data from our Brielle extent
-# opq comes from the osmdata library
-# it's a query.
+# get data from OSM inside our Brielle extent
+# opq comes from the osmdata library: `overpass query`
+# it's a query
 x <- opq(bbox = bb) |>
   add_osm_feature(key = "building") |>
   osmdata_sf()
 # last line converts it to sf features
+# rather than OSM features
 
 # let's peak at it
 str(x)
 str(x$osm_polygons)
 
-# first we get it out of decimal degrees and into a native CRS:
-# we can skip this for non-euro cities, but we will need
+
+
+
+# first we get it out of decimal degrees and into a native CRS
+# we can skip this for non-euro cities, especially as the US
+# winds up sideways in the Dutch projection
+# but we will need
 # meters for ep 16.
 buildings <- x$osm_polygons |>
   st_transform(crs = 28992)
@@ -48,8 +52,16 @@ str(buildings)
 # what would happen without 'as.numeric'?
 start_date <- as.numeric(buildings$start_date)
 
-# this makes everything before 1900 the same shade with the
-# continuous scale
+start_date
+summary(start_date)
+length(start_date)
+
+# NOTE: there is both start_date and build_date
+
+# highlight anything older than 1900
+# this is done visually by making everything before 1900
+# equal to 1900
+# thus making it the same color on our continuous scale
 buildings$build_date <- if_else(start_date < 1900, 1900, start_date)
 
 ggplot(data = buildings) +
@@ -64,6 +76,7 @@ ggplot(data = buildings) +
 # and get out the same hued building layer
 # we haven't covered functions a lot, but
 # here's why they are useful.
+# we skipped this for time, but it's really fun to play with.
 
 extract_buildings <- function(cityname, year = 1800) {
   bb <- getbb(cityname)
@@ -135,15 +148,11 @@ extract_buildings_2("Krakow, Poland")
 
 extract_buildings_2("Gent")
 
-# 20 minute OSM challenge: would take a lot of reading.
-# or ad hoc: edit the function to take city AND year.
+# 20 minute OSM / Leaflet challenge: would take a lot of reading.
+# an alternative might be to
+# edit the function to take city AND year as parameters
 
-
-
-
-
-
-# ##### Lesson solution:
+# ##### Here's the  solution:
 # install.packages("leaflet")
 library(leaflet)
 
