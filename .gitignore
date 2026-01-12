@@ -1,6 +1,6 @@
 # data directory in solution set
-scripts/data
-scripts/data_output
+solutions/data
+solutions/data_output
 
 # sandpaper files
 episodes/*html
