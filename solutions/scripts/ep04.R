@@ -1,4 +1,7 @@
 library(tidyverse)
+library(here)
+
+gapminder <- read.csv(here("solutions/data", "gapminder-data.csv"))
 
 ggplot(
   data = gapminder, # data
@@ -21,7 +24,7 @@ gapminder |>
   filter(year == 2007 & continent == "Americas") |>
   mutate(country = fct_reorder(country, gdpPercap)) |> # reorder factor levels
 # re-ordering something that wasn't already a factor automagically
-  # converts text to factos
+  # converts text to factors
     ggplot(aes(x = country, y = gdpPercap)) +
   geom_col() +
   coord_flip()
@@ -101,6 +104,6 @@ gapminder_amr_2007 <- gapminder |>
   )
 
 write.csv(gapminder_amr_2007,
-          here("data_output", "gapminder_americas_2007.csv"),
+          here("solutions/data_output", "gapminder_americas_2007.csv"),
           row.names = FALSE
 )
