@@ -54,5 +54,5 @@ nordic_cat
 # any disadvantaged to factors?
 # can't add a new value on the fly.
 nordic_cat_2 <- c(nordic_cat, "Sweeden", "Finland")
-
+str(nordic_cat_2)
 
