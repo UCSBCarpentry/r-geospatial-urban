@@ -271,17 +271,14 @@ extract_buildings <- function(cityname, year = 1900) {
 extract_buildings("Brielle, NL")
 ```
 
-``` error
-Error in `httr2::req_perform()` at osmdata/R/overpass-query.R:193:9:
-! HTTP 504 Gateway Timeout.
-```
+<img src="fig/15-import-and-visualise-osm-data-rendered-Replicability-1.png" style="display: block; margin: auto;" />
 
 ``` r
 # test on Naarden
 extract_buildings("Naarden, NL")
 ```
 
-<img src="fig/15-import-and-visualise-osm-data-rendered-Replicability-1.png" style="display: block; margin: auto;" />
+<img src="fig/15-import-and-visualise-osm-data-rendered-Replicability-2.png" style="display: block; margin: auto;" />
 
 
 ## Going interactive.
