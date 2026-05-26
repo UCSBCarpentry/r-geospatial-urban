@@ -60,7 +60,7 @@ ggplot() +
   coord_equal()
 ```
 
-<img src="fig/14-work-with-multi-band-rasters-rendered-plot-rgb-band1-1.png" style="display: block; margin: auto;" />
+<img src="fig/14-work-with-multi-band-rasters-rendered-plot-rgb-band1-1.png" alt="" style="display: block; margin: auto;" />
 
 ## Image Raster Data Values
 
@@ -90,7 +90,7 @@ ggplot() +
   coord_equal()
 ```
 
-<img src="fig/14-work-with-multi-band-rasters-rendered-unnamed-chunk-1-1.png" style="display: block; margin: auto;" />
+<img src="fig/14-work-with-multi-band-rasters-rendered-unnamed-chunk-1-1.png" alt="" style="display: block; margin: auto;" />
 
 :::
 :::
@@ -112,14 +112,14 @@ RGB_stack_TUD
 ```
 
 ``` output
-class       : SpatRaster 
+class       : SpatRaster
 size        : 4988, 4866, 3  (nrow, ncol, nlyr)
 resolution  : 0.08, 0.08  (x, y)
 extent      : 85272, 85661.28, 446295.2, 446694.2  (xmin, xmax, ymin, ymax)
-coord. ref. : Amersfoort / RD New (EPSG:28992) 
-source      : tudlib-rgb.tif 
-colors RGB  : 1, 2, 3 
-names       : tudlib-rgb_1, tudlib-rgb_2, tudlib-rgb_3 
+coord. ref. : Amersfoort / RD New (EPSG:28992)
+source      : tudlib-rgb.tif
+colors rgb  : 1, 2, 3
+names       : tudlib-rgb_1, tudlib-rgb_2, tudlib-rgb_3
 ```
 We can view the attributes of each band in the stack in a single output. For example, if we had hundreds of bands, we could specify which band we would like to view attributes for using an index value:
 
@@ -128,13 +128,13 @@ RGB_stack_TUD[[2]]
 ```
 
 ``` output
-class       : SpatRaster 
+class       : SpatRaster
 size        : 4988, 4866, 1  (nrow, ncol, nlyr)
 resolution  : 0.08, 0.08  (x, y)
 extent      : 85272, 85661.28, 446295.2, 446694.2  (xmin, xmax, ymin, ymax)
-coord. ref. : Amersfoort / RD New (EPSG:28992) 
-source      : tudlib-rgb.tif 
-name        : tudlib-rgb_2 
+coord. ref. : Amersfoort / RD New (EPSG:28992)
+source      : tudlib-rgb.tif
+name        : tudlib-rgb_2
 ```
 We can also use `ggplot2` to plot the data in any layer of our raster object. Remember, we need to convert to a data frame first.
 
@@ -170,7 +170,7 @@ ggplot() +
   coord_equal()
 ```
 
-<img src="fig/14-work-with-multi-band-rasters-rendered-plot-rgb-band2-1.png" style="display: block; margin: auto;" />
+<img src="fig/14-work-with-multi-band-rasters-rendered-plot-rgb-band2-1.png" alt="" style="display: block; margin: auto;" />
 
 We can access any individual band in the same way.
 
@@ -192,7 +192,7 @@ plotRGB(RGB_stack_TUD,
 )
 ```
 
-<img src="fig/14-work-with-multi-band-rasters-rendered-plot-rgb-1.png" style="display: block; margin: auto;" />
+<img src="fig/14-work-with-multi-band-rasters-rendered-plot-rgb-1.png" alt="" style="display: block; margin: auto;" />
 
 The image above looks pretty good. We can explore whether applying a stretch to the image might improve clarity and contrast using stretch="lin" or stretch="hist", as explained in [this lesson](https://datacarpentry.org/r-raster-vector-geospatial/instructor/05-raster-multi-band-in-r.html#create-a-three-band-image).
 

@@ -64,7 +64,7 @@ describe("data/tud-dsm-5m.tif")
 
 ``` output
  [1] "Driver: GTiff/GeoTIFF"                                                                                                 
- [2] "Files: data/tud-dsm-5m.tif"                                                                                            
+ [2] "Files: /home/runner/work/r-geospatial-urban/r-geospatial-urban/site/built/data/tud-dsm-5m.tif"                         
  [3] "Size is 722, 386"                                                                                                      
  [4] "Coordinate System is:"                                                                                                 
  [5] "PROJCRS[\"Amersfoort / RD New\","                                                                                      
@@ -140,13 +140,13 @@ DSM_TUD
 ```
 
 ``` output
-class       : SpatRaster 
+class       : SpatRaster
 size        : 386, 722, 1  (nrow, ncol, nlyr)
 resolution  : 5, 5  (x, y)
 extent      : 83565, 87175, 445250, 447180  (xmin, xmax, ymin, ymax)
-coord. ref. : Amersfoort / RD New (EPSG:28992) 
-source      : tud-dsm-5m.tif 
-name        : tud-dsm-5m 
+coord. ref. : Amersfoort / RD New (EPSG:28992)
+source      : tud-dsm-5m.tif
+name        : tud-dsm-5m
 ```
 The information above includes a report on dimension, resolution, extent and CRS, but no information about the values. Similar to other data structures in R like vectors and data frames, descriptive statistics for raster data can be retrieved with the `summary()` function.
 
@@ -367,7 +367,7 @@ describe("data/tud-dsm-5m-hill.tif")
 
 ``` output
  [1] "Driver: GTiff/GeoTIFF"                                                                                                 
- [2] "Files: data/tud-dsm-5m-hill.tif"                                                                                       
+ [2] "Files: /home/runner/work/r-geospatial-urban/r-geospatial-urban/site/built/data/tud-dsm-5m-hill.tif"                    
  [3] "Size is 722, 386"                                                                                                      
  [4] "Coordinate System is:"                                                                                                 
  [5] "PROJCRS[\"Amersfoort / RD New\","                                                                                      
