@@ -63,7 +63,7 @@ summary(buildings$start_date)
 
 ``` output
    Length  N.unique   N.blank Min.nchar Max.nchar       NAs 
-    12363       206         0         4         4       458 
+    12346       205         0         4         4       459 
 ```
 
 ``` r
