@@ -57,8 +57,8 @@ x <- opq(bbox = bb) |>
 ```
 
 ``` error
-Error in `httr2::req_perform()` at osmdata/R/overpass-query.R:195:9:
-! HTTP 429 Too Many Requests.
+Error in `httr2::req_perform()` at osmdata/R/overpass-query.R:37:9:
+! HTTP 500 Internal Server Error.
 ```
 
 ``` r
