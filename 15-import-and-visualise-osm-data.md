@@ -149,8 +149,8 @@ x <- opq(bbox = bb) |>
 ```
 
 ``` error
-Error in `httr2::req_perform()` at osmdata/R/overpass-query.R:37:9:
-! HTTP 500 Internal Server Error.
+Error in `httr2::req_perform()` at osmdata/R/overpass-query.R:195:9:
+! HTTP 429 Too Many Requests.
 ```
 
 
@@ -278,7 +278,7 @@ extract_buildings("Brielle, NL")
 
 ``` error
 Error in `httr2::req_perform()` at osmdata/R/overpass-query.R:37:9:
-! HTTP 500 Internal Server Error.
+! HTTP 429 Too Many Requests.
 ```
 
 ``` r
@@ -288,7 +288,7 @@ extract_buildings("Naarden, NL")
 
 ``` error
 Error in `httr2::req_perform()` at osmdata/R/overpass-query.R:37:9:
-! HTTP 500 Internal Server Error.
+! HTTP 429 Too Many Requests.
 ```
 
 
