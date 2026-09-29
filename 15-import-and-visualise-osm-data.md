@@ -149,7 +149,7 @@ x <- opq(bbox = bb) |>
 ```
 
 ``` error
-Error in `httr2::req_perform()` at osmdata/R/overpass-query.R:37:9:
+Error in `httr2::req_perform()` at osmdata/R/overpass-query.R:195:9:
 ! HTTP 429 Too Many Requests.
 ```
 
@@ -287,7 +287,7 @@ extract_buildings("Naarden, NL")
 ```
 
 ``` error
-Error in `httr2::req_perform()` at osmdata/R/overpass-query.R:37:9:
+Error in `httr2::req_perform()` at osmdata/R/overpass-query.R:195:9:
 ! HTTP 429 Too Many Requests.
 ```
 
