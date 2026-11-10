@@ -150,7 +150,7 @@ x <- opq(bbox = bb) |>
 
 ``` error
 Error in `httr2::req_perform()` at osmdata/R/overpass-query.R:37:9:
-! HTTP 429 Too Many Requests.
+! HTTP 502 Bad Gateway.
 ```
 
 
@@ -278,7 +278,7 @@ extract_buildings("Brielle, NL")
 
 ``` error
 Error in `httr2::req_perform()` at osmdata/R/overpass-query.R:37:9:
-! HTTP 429 Too Many Requests.
+! HTTP 502 Bad Gateway.
 ```
 
 ``` r
@@ -288,7 +288,7 @@ extract_buildings("Naarden, NL")
 
 ``` error
 Error in `httr2::req_perform()` at osmdata/R/overpass-query.R:37:9:
-! HTTP 429 Too Many Requests.
+! HTTP 502 Bad Gateway.
 ```
 
 
